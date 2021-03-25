@@ -48,16 +48,9 @@ public static void createNewDatabase() {
             if (conn != null) {
                 String sql = "INSERT INTO EMPLOYEES (NAME,AGE,ADDRESS,SALARY)\n" +
                         "VALUES ( 'Mary', 18, 'Houston', 50000.00 );";
-
-
+                
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql);
-                // loop through the result set
-                while (rs.next()) {
-                    System.out.println(rs.getInt("id") + "\t" +
-                            rs.getString("name") + "\t" +
-                            rs.getDouble("salary"));
-                }
+                stmt.executeQuery(sql);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -72,13 +65,7 @@ public static void createNewDatabase() {
                 String sql = "UPDATE EMPLOYEES SET NAME = 'Marisha WHERE ID = 8";
 
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql);
-                // loop through the result set
-                while (rs.next()) {
-                    System.out.println(rs.getInt("id") + "\t" +
-                            rs.getString("name") + "\t" +
-                            rs.getDouble("salary"));
-                }
+                stmt.executeUpdate(sql);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -87,20 +74,13 @@ public static void createNewDatabase() {
 
     public static void delete() {
 
-
         try (Connection conn = DriverManager.getConnection(DB_URL)) {
             if (conn != null) {
                 String sql = "DELETE FROM EMPLOYEES WHERE ID = 9";
 
 
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql);
-                // loop through the result set
-                while (rs.next()) {
-                    System.out.println(rs.getInt("id") + "\t" +
-                            rs.getString("name") + "\t" +
-                            rs.getDouble("salary"));
-                }
+                stmt.executeQuery(sql);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
